@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tscacademyofficial.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://tscacademyofficial.com/toolkit.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tscacademyofficial.com/warmup.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <url><loc>https://tscacademyofficial.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/</loc><priority>0.8</priority></url>
+  <url><loc>https://tscacademyofficial.com/toolkit.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/warmup.html</loc><priority>0.6</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/pre-match-nerves-young-athletes.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/what-to-say-after-a-loss.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/growth-spurts-young-athletes.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/strength-training-for-kids-safe.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/visualization-for-young-athletes.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/training-hard-not-improving.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/youth-athlete-motivation-burnout.html</loc><priority>0.7</priority></url>
+  <url><loc>https://tscacademyofficial.com/blog/sleep-recovery-young-athletes.html</loc><priority>0.7</priority></url>
 </urlset>
