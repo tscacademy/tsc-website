@@ -53,7 +53,7 @@ const q=new URLSearchParams(location.search);const lang=q.get('lang')==='es'?'es
 const name=(q.get('name')||'').replace(/[<>]/g,'').slice(0,40);
 document.documentElement.lang=lang;
 if(lang==='es'){document.querySelectorAll('[data-t]').forEach(el=>{const v=T[el.dataset.t];if(v)el.innerHTML=v;});}
-if(q.get('seg')==='warm'){document.getElementById('offer').style.display='block';
+if(q.get('seg')==='warm'||q.get('seg')==='cold'){document.getElementById('offer').style.display='block';
   document.getElementById('obtn').href='mailto:info@tscacademyofficial.com?subject='+encodeURIComponent(lang==='es'?'Quiero el Athlete Blueprint':'I want the Athlete Blueprint')+(name?('%20-%20'+encodeURIComponent(name)):'');}
 document.querySelectorAll('.nm').forEach(el=>el.textContent=name?(', '+name):'');
 </script>
