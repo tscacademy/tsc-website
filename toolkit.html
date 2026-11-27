@@ -18,7 +18,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
   h1,h2,.serif{font-family:'Fraunces',serif;font-weight:500}
-  .top{background:var(--green-deep);color:var(--cream);padding:48px 16px 56px;text-align:center}
+  .top{background:var(--green-deep);color:var(--cream);padding:48px 16px 76px;text-align:center}
   .top .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-soft);font-weight:600;margin-bottom:16px}
   .top h1{font-size:clamp(28px,5vw,44px);line-height:1.15;max-width:720px;margin:0 auto 16px}
   .top h1 em{color:var(--brass);font-style:italic}
@@ -26,9 +26,9 @@
   .lang{position:absolute;top:14px;right:16px;font-size:13px}
   .lang a{color:var(--brass-soft);text-decoration:none;margin-left:10px}
   .lang a.on{color:var(--cream);font-weight:600}
-  .wrap{max-width:640px;margin:-28px auto 48px;padding:0 16px}
+  .wrap{max-width:640px;margin:-36px auto 48px;padding:0 16px;position:relative;z-index:1}
   form{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px 22px;box-shadow:0 20px 50px -20px rgba(21,42,32,.25)}
-  fieldset{border:0;margin-bottom:24px}
+  fieldset{border:0;margin-bottom:24px;min-width:0}
   legend,label.q{display:block;font-weight:600;font-size:15px;margin-bottom:10px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media(max-width:520px){.row{grid-template-columns:1fr}}
@@ -53,7 +53,7 @@
   <div class="lang"><a href="?lang=en" data-l="en">EN</a><a href="?lang=es" data-l="es">ES</a></div>
   <div class="eyebrow">TSC Academy · <span data-t="eyebrow">Free for parents</span></div>
   <h1 data-t="h1">The Parent Toolkit for <em>young athletes</em></h1>
-  <p data-t="sub">What to do about nerves, plateaus, growth spurts and motivation. From our Physical and Mental Performance Coaches. Answer 3 quick questions and we'll send you the parts that fit your athlete.</p>
+  <p data-t="sub">What to do about nerves, plateaus, growth spurts and motivation. From our Physical and Mental Performance Coaches. Answer a few quick questions and we'll send you the parts that fit your athlete.</p>
 </header>
 
 <main class="wrap">
@@ -131,7 +131,7 @@
 const T={es:{
   eyebrow:"Gratis para padres",
   h1:"El Toolkit para padres de <em>jóvenes deportistas</em>",
-  sub:"Qué hacer con los nervios, los estancamientos, el estirón y la motivación. De nuestros coaches de rendimiento físico y mental. Responde 3 preguntas rápidas y te mandamos la parte que le sirve a tu hijo/a.",
+  sub:"Qué hacer con los nervios, los estancamientos, el estirón y la motivación. De nuestros coaches de rendimiento físico y mental. Responde unas preguntas rápidas y te mandamos la parte que le sirve a tu hijo/a.",
   name:"Tu nombre",email:"Tu email",country:"País",pick:"Elige…",other:"Otro",whatsapp:"WhatsApp (opcional)",
   sport:"Deporte de tu hijo/a",tennis:"Tenis",soccer:"Fútbol",age:"Su edad",
   q1:"1. ¿Dónde ves que más le cuesta ahora mismo?",
