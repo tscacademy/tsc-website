@@ -166,6 +166,17 @@ if(T[lang]){document.querySelectorAll('[data-t]').forEach(el=>{const v=T[lang][e
 
 const f=document.getElementById('f');
 function val(n){const el=f.querySelector('[name="'+n+'"]:checked');return el?el.value:'';}
+
+/* DM mode: answers already given in the Instagram DM arrive as ?p=&l=&t=&b= ; the parent only types name + email + sport + age */
+const DM={problem:qs.get('p'),looking:qs.get('l'),timing:qs.get('t'),budget:qs.get('b')};
+const dmMode=!!DM.looking;
+if(dmMode){
+  Object.entries(DM).forEach(([n,v])=>{if(!v)return;const r=f.querySelector('[name="'+n+'"][value="'+v+'"]');if(r)r.checked=true;});
+  f.querySelectorAll('fieldset').forEach((fs,i)=>{if(i>1||(i===1&&DM.problem))fs.classList.add('hide');});
+  ['country','whatsapp'].forEach(n=>{const el=f.querySelector('[name="'+n+'"]');if(el){el.required=false;el.closest('.field').classList.add('hide');}});
+  const sub=document.querySelector('[data-t="sub"]');
+  if(sub)sub.textContent=lang==='es'?'Ya tenemos tus respuestas. Solo dinos dónde te la enviamos.':'We already have your answers. Just tell us where to send it.';
+}
 f.querySelectorAll('[name=looking]').forEach(r=>r.addEventListener('change',()=>{
   const pro=val('looking')==='pro'||val('looking')==='complement';
   ['q3','q4'].forEach(id=>document.getElementById(id).classList.toggle('hide',!pro));
@@ -181,15 +192,15 @@ function segment(){
 f.addEventListener('submit',e=>{
   e.preventDefault();
   const pro=val('looking')==='pro'||val('looking')==='complement';
-  let ok=f.name.value.trim()&&/\S+@\S+\.\S+/.test(f.email.value)&&f.country.value&&f.sport.value&&f.age.value&&val('problem')&&val('looking')&&f.consent.checked;
-  if(pro&&(!val('timing')||!val('budget')))ok=false;
+  let ok=f.name.value.trim()&&/\S+@\S+\.\S+/.test(f.email.value)&&(dmMode||f.country.value)&&f.sport.value&&f.age.value&&val('problem')&&val('looking')&&f.consent.checked;
+  if(pro&&!dmMode&&(!val('timing')||!val('budget')))ok=false;
   const err=document.getElementById('err');
   if(!ok){err.style.display='block';err.scrollIntoView({behavior:'smooth',block:'center'});return;}
   err.style.display='none';
   const seg=segment();document.getElementById('segment').value=seg;
   const btn=f.querySelector('button');btn.disabled=true;btn.textContent='…';
   const body=new URLSearchParams(new FormData(f)).toString();
-  const next=(seg==='hot'?'/toolkit-call.html':'/toolkit-thanks.html')+'?lang='+lang+'&name='+encodeURIComponent(f.name.value.trim());
+  const next=(seg==='hot'?'/toolkit-call.html':'/toolkit-thanks.html')+'?lang='+lang+'&seg='+seg+'&name='+encodeURIComponent(f.name.value.trim());
   setTimeout(()=>location.href=next,5000);
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
     .then(()=>location.href=next).catch(()=>location.href=next);
