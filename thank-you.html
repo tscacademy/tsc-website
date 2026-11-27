@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your Guide Is Ready — TSC Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA; --cream-deep:#F0EADA; --ink:#28241D;
+    --green:#1F3B2E; --green-deep:#152A20; --brass:#A8824F; --brass-soft:#D9C6A3; --white:#FFFDF8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--green-deep); color:var(--cream); font-family:'Inter', sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:40px 24px;
+  }
+  h1,.serif{font-family:'Fraunces', serif; font-weight:500;}
+  .wrap{max-width:520px;}
+  .eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--brass-soft); font-weight:600; margin-bottom:20px;}
+  h1{font-size:clamp(30px,4vw,42px); line-height:1.2; margin-bottom:20px;}
+  h1 em{font-style:italic; color:var(--brass);}
+  p{font-size:16px; color:rgba(247,243,234,0.72); line-height:1.6; margin-bottom:36px;}
+  .btn{
+    display:inline-block; background:var(--brass); color:var(--green-deep); font-weight:700;
+    padding:18px 38px; border-radius:999px; font-size:15px; text-decoration:none;
+    transition:background .25s ease;
+  }
+  .btn:hover{background:var(--brass-soft);}
+  .footer-note{margin-top:40px; font-size:13px; color:rgba(247,243,234,0.45);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">TSC Academy</div>
+    <h1>Your guide is <em>ready</em>.</h1>
+    <p>Thanks for signing up. Here's your free Young Athlete's Toolkit — six tools you and your child can start using this week.</p>
+    <a class="btn" href="/toolkit.pdf" download>Download the Toolkit (PDF)</a>
+    <div class="footer-note">TSC Academy — part of The Sport Class</div>
+  </div>
+</body>
+</html>

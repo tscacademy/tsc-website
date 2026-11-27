@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your toolkit is on its way · TSC Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<!-- META PIXEL: paste the base pixel code here, then add: fbq('track','Lead'); -->
+<style>
+:root{--cream:#F7F3EA;--green-deep:#152A20;--brass:#A8824F;--brass-soft:#D9C6A3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--green-deep);color:var(--cream);font-family:'Inter',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 16px}
+.wrap{max-width:540px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-soft);font-weight:600;margin-bottom:20px}
+h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,5vw,40px);line-height:1.2;margin-bottom:18px}
+h1 em{font-style:italic;color:var(--brass)}
+p{font-size:16px;color:rgba(247,243,234,.78);line-height:1.6;margin-bottom:24px}
+.btn{display:inline-block;background:var(--brass);color:var(--green-deep);font-weight:600;padding:17px 34px;border-radius:999px;font-size:15px;text-decoration:none}
+.btn:hover{background:var(--brass-soft)}
+.sign{margin-top:32px;font-size:14px;color:rgba(247,243,234,.6)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">TSC Academy</div>
+<h1 data-t="h1">Your toolkit is <em>on its way</em><span class="nm"></span>.</h1>
+<p data-t="p1">From what you told us, you're looking for real help, not just tips. Our starting point is the TSC Athlete Assessment: a 40-minute video session and a written plan within 72 hours, credited if you continue. Before booking it, we offer a quick 15-minute call to check it's the right fit for your athlete. If it isn't, we'll tell you.</p>
+<a class="btn" href="https://calendar.app.google/mUR4JpPZhbQ4wUmN6" target="_blank" rel="noopener" data-t="cta">Book the 15-min fit call</a>
+<p data-t="p2" style="margin-top:24px;font-size:14px">Times don't work? Just reply to the toolkit email and we'll find one.</p>
+<div class="sign" data-t="sign">The TSC Academy team</div>
+</div>
+<script>
+const T={h1:"Tu toolkit va <em>de camino</em><span class=\"nm\"></span>.",p1:"Por lo que nos cuentas, buscas ayuda de verdad, no solo consejos. Nuestro punto de partida es el TSC Athlete Assessment: una sesión por video de 40 minutos y un plan por escrito en 72 horas, que se descuenta si continúas. Antes de reservarlo, te ofrecemos una llamada rápida de 15 minutos para comprobar que encaja con tu hijo/a. Si no encaja, te lo decimos.",cta:"Reserva la llamada de 15 min",p2:"¿No te van los horarios? Responde al email del toolkit y lo cuadramos.",sign:"El equipo de TSC Academy"};
+const q=new URLSearchParams(location.search);const lang=q.get('lang')==='es'?'es':'en';
+const name=(q.get('name')||'').replace(/[<>]/g,'').slice(0,40);
+document.documentElement.lang=lang;
+if(lang==='es'){document.querySelectorAll('[data-t]').forEach(el=>{const v=T[el.dataset.t];if(v)el.innerHTML=v;});}
+document.querySelectorAll('.nm').forEach(el=>el.textContent=name?(', '+name):'');
+</script>
+</body>
+</html>

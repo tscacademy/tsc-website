@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your warm-up · TSC Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F7F3EA;--green-deep:#152A20;--brass:#A8824F;--brass-soft:#D9C6A3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--green-deep);color:var(--cream);font-family:'Inter',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 16px}
+.wrap{max-width:540px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-soft);font-weight:600;margin-bottom:20px}
+h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,5vw,40px);line-height:1.2;margin-bottom:18px}
+h1 em{font-style:italic;color:var(--brass)}
+p{font-size:16px;color:rgba(247,243,234,.78);line-height:1.6;margin-bottom:24px}
+.btn{display:inline-block;background:var(--brass);color:var(--green-deep);font-weight:600;padding:17px 34px;border-radius:999px;font-size:15px;text-decoration:none;margin-bottom:28px}
+.btn:hover{background:var(--brass-soft)}
+.alt{color:var(--brass-soft)}
+.sign{margin-top:24px;font-size:14px;color:rgba(247,243,234,.6)}
+.note{font-size:12px;color:rgba(247,243,234,.45);margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">TSC Academy</div>
+<h1 data-t="h1">Here's your <em>warm-up</em><span class="nm"></span>.</h1>
+<p data-t="p1">This is the official FIFA 11+ Kids programme. Do it 2-3 times a week before games or practice: about 15 minutes.</p>
+<!-- PASTE THE OFFICIAL FIFA 11+ KIDS LINK BELOW (replace FIFA_LINK). Do not host FIFA's PDF on our site. -->
+<a class="btn" id="fifa" href="https://www.f-marc.com/fifa-11/" target="_blank" rel="noopener" data-t="btn">Open the official FIFA 11+ Kids</a>
+<p data-t="p2">Strong legs are half the job. The other half is the head: what your child does after a mistake. Our free parent guide covers that.</p>
+<p><a class="alt" href="/toolkit.html?utm_source=warmup&amp;utm_campaign=fifa" data-t="p3">Get the free parent guide →</a></p>
+<div class="sign" data-t="sign">The TSC Academy team</div>
+<p class="note" data-t="note">FIFA 11+ Kids is created by FIFA. TSC Academy is not affiliated with FIFA.</p>
+</div>
+<script>
+const T={h1:"Aquí tienes tu <em>calentamiento</em><span class=\"nm\"></span>.",p1:"Es el programa oficial FIFA 11+ Kids. Hazlo 2-3 veces por semana antes de partidos o entrenamientos: unos 15 minutos.",btn:"Abrir el FIFA 11+ Kids oficial",p2:"Unas piernas fuertes son la mitad del trabajo. La otra mitad es la cabeza: qué hace tu hijo/a después de un error. Nuestra guía gratis para padres va de eso.",p3:"Quiero la guía gratis para padres →",sign:"El equipo de TSC Academy",note:"FIFA 11+ Kids es un programa creado por FIFA. TSC Academy no está afiliada a FIFA."};
+const q=new URLSearchParams(location.search);const lang=q.get('lang')==='es'?'es':'en';
+const name=(q.get('name')||'').replace(/[<>]/g,'').slice(0,40);
+document.documentElement.lang=lang;
+if(lang==='es'){document.querySelectorAll('[data-t]').forEach(el=>{const v=T[el.dataset.t];if(v)el.innerHTML=v;});}
+document.querySelectorAll('.nm').forEach(el=>el.textContent=name?(', '+name):'');
+</script>
+</body>
+</html>
