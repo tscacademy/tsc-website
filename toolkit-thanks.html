@@ -24,6 +24,9 @@ p{font-size:16px;color:rgba(247,243,234,.78);line-height:1.6;margin-bottom:24px}
 .offer ul{margin:0 0 18px 18px;color:rgba(247,243,234,.82);font-size:15px;line-height:1.6}
 .offer .price{font-size:15px;color:var(--brass-soft);margin-bottom:16px}
 .offer p{margin-bottom:14px;font-size:15px}
+.soon{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--green-deep,#16291f);background:var(--brass-soft,#d9c6a3);border-radius:99px;padding:4px 10px;margin-bottom:10px}
+.wl{display:flex;gap:8px;flex-wrap:wrap}.wl input[type=email]{flex:1 1 200px;min-width:0;padding:13px 14px;border-radius:12px;border:1px solid rgba(217,198,163,.45);background:rgba(247,243,234,.08);color:inherit;font:inherit;font-size:16px}
+.wl .btn{border:0;cursor:pointer;font:inherit}.wl-ok{display:none;color:var(--brass-soft,#d9c6a3);font-weight:600}
 .sign{margin-top:32px;font-size:14px;color:rgba(247,243,234,.6)}
 </style>
 </head>
@@ -34,6 +37,7 @@ p{font-size:16px;color:rgba(247,243,234,.78);line-height:1.6;margin-bottom:24px}
 <p data-t="p1">Check your inbox in the next minute. If you don't see it, look in Promotions or Spam and move it to your main inbox, so our next emails reach you too.</p>
 <p data-t="p2">One small thing: reply to that email with one sentence about your athlete. A real coach reads every answer.</p>
 <div class="offer" id="offer">
+<div class="soon" data-t="o_soon">Coming soon</div>
 <h2 data-t="o_h">Want to go one step further?</h2>
 <p data-t="o_p">The <strong>TSC Athlete Blueprint</strong>: a 6-week mind + body plan built around your athlete's age and main challenge.</p>
 <ul>
@@ -43,18 +47,31 @@ p{font-size:16px;color:rgba(247,243,234,.78);line-height:1.6;margin-bottom:24px}
 <li data-t="o_4">Week-3 check-in: a coach adjusts the plan</li>
 </ul>
 <div class="price" data-t="o_price">$59, one payment. No subscription.</div>
-<a class="btn" id="obtn" href="mailto:info@tscacademyofficial.com?subject=Athlete%20Blueprint" data-t="o_btn">I want the Blueprint</a>
+<p data-t="o_wl">It launches very soon. Leave your email and you'll be the first to get it.</p>
+<form class="wl" id="wl" name="blueprint-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="blueprint-waitlist">
+<input type="hidden" name="name" id="wl-name"><input type="hidden" name="lang" id="wl-lang"><input type="hidden" name="seg" id="wl-seg">
+<p hidden><label>Leave empty <input name="bot-field"></label></p>
+<input type="email" name="email" required placeholder="your@email.com" aria-label="Email" id="wl-email">
+<button class="btn" type="submit" data-t="o_btn">Notify me</button>
+</form>
+<div class="wl-ok" id="wl-ok" data-t="o_ok">Done! You're on the list. We'll email you as soon as it's ready.</div>
 </div>
 <div class="sign" data-t="sign">The TSC Academy team</div>
 </div>
 <script>
-const T={h1:"Tu toolkit va <em>de camino</em><span class=\"nm\"></span>.",p1:"Revisa tu correo en el próximo minuto. Si no lo ves, mira en Promociones o Spam y muévelo a tu bandeja principal, así te llegarán también los siguientes.",p2:"Una cosa: responde a ese email con una frase sobre tu hijo/a. Cada respuesta la lee un coach de verdad.",sign:"El equipo de TSC Academy",o_h:"¿Quieres ir un paso más allá?",o_p:"El <strong>TSC Athlete Blueprint</strong>: un plan de 6 semanas de mente y cuerpo, hecho según la edad de tu hijo/a y lo que más le cuesta.",o_1:"Rutina mental semanal (nervios, errores, confianza o motivación)",o_2:"Plan físico para su edad, con vídeos de los ejercicios",o_3:"Audios guiados y una guía para padres",o_4:"Revisión en la semana 3: un coach ajusta el plan",o_price:"$59, un solo pago. Sin suscripción.",o_btn:"Quiero el Blueprint"};
+const T={h1:"Tu toolkit va <em>de camino</em><span class=\"nm\"></span>.",p1:"Revisa tu correo en el próximo minuto. Si no lo ves, mira en Promociones o Spam y muévelo a tu bandeja principal, así te llegarán también los siguientes.",p2:"Una cosa: responde a ese email con una frase sobre tu hijo/a. Cada respuesta la lee un coach de verdad.",sign:"El equipo de TSC Academy",o_h:"¿Quieres ir un paso más allá?",o_p:"El <strong>TSC Athlete Blueprint</strong>: un plan de 6 semanas de mente y cuerpo, hecho según la edad de tu hijo/a y lo que más le cuesta.",o_1:"Rutina mental semanal (nervios, errores, confianza o motivación)",o_2:"Plan físico para su edad, con vídeos de los ejercicios",o_3:"Audios guiados y una guía para padres",o_4:"Revisión en la semana 3: un coach ajusta el plan",o_price:"$59, un solo pago. Sin suscripción.",o_btn:"Avísame",o_soon:"Muy pronto",o_wl:"Sale muy pronto. Déjanos tu email y serás de los primeros en tenerlo.",o_ok:"¡Listo! Estás en la lista. Te escribimos en cuanto esté disponible."};
 const q=new URLSearchParams(location.search);const lang=q.get('lang')==='es'?'es':'en';
 const name=(q.get('name')||'').replace(/[<>]/g,'').slice(0,40);
 document.documentElement.lang=lang;
 if(lang==='es'){document.querySelectorAll('[data-t]').forEach(el=>{const v=T[el.dataset.t];if(v)el.innerHTML=v;});}
-if(q.get('seg')==='warm'||q.get('seg')==='cold'){document.getElementById('offer').style.display='block';
-  document.getElementById('obtn').href='mailto:info@tscacademyofficial.com?subject='+encodeURIComponent(lang==='es'?'Quiero el Athlete Blueprint':'I want the Athlete Blueprint')+(name?('%20-%20'+encodeURIComponent(name)):'');}
+if(q.get('seg')==='warm'||q.get('seg')==='cold'){document.getElementById('offer').style.display='block';}
+if(lang==='es')document.getElementById('wl-email').placeholder='tu@email.com';
+document.getElementById('wl-name').value=name;document.getElementById('wl-lang').value=lang;document.getElementById('wl-seg').value=q.get('seg')||'';
+document.getElementById('wl').addEventListener('submit',function(e){e.preventDefault();const f=e.target;
+  const body=new URLSearchParams(new FormData(f)).toString();
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).finally(function(){f.style.display='none';document.getElementById('wl-ok').style.display='block';});
+  window.fbq&&fbq('track','Lead',{content_name:'blueprint-waitlist'});});
 document.querySelectorAll('.nm').forEach(el=>el.textContent=name?(', '+name):'');
 </script>
 </body>
